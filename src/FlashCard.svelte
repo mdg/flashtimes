@@ -35,18 +35,30 @@
 	}
 </script>
 
+<style>
+	span {
+		width: 50px;
+	}
+</style>
+
 <span>
   <strong>{i}.</strong>
 </span>
 
 &nbsp;&nbsp;&nbsp;
 
-<span>
+<span class=number>
   {display_x}
 </span>
 
-<span>
-  <strong>x</strong>
+<strong>x</strong>
+
+<span class=number>
+{display_y}
 </span>
 
-{display_y} = {display_z}
+=
+
+<span class=number>
+{display_z}
+</span>

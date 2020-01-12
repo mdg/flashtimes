@@ -41,22 +41,11 @@
 
 	function show_next() {
 		i = i + 1;
-        prompt_index += 1;
         answer_index += 1;
 		prompt_display = "none";
 		answer_display = "none";
 	}
 
-    function transition(k, answer_index)
-    {
-        if (k < answer_index) {
-            return `<div transition:fade="{{ duration: 100 }}">`;
-        } else if (k === answer_index) {
-            return `<div transition:slide="{{ duration: 1000 }}">`;
-        }
-        return `<div transition:fade="{{ duration: 1000 }}">`;
-    }
-	
 	function handle_show_next(event) {
 		show_next();
 	}
@@ -97,7 +86,11 @@
 <p>
 	{#each facts as fact, k}
 	  {#if k === prompt_index || k === answer_index}
-        <div transition:slide="{{ duration: 1000 }}">
+        <div
+            in:slide="{{ duration: 1000 }}"
+            out:slide="{{ duration: 1000 }}"
+            on:outroend="{() => prompt_index += 1}"
+            >
 	  	<FlashCard
 							 i={k + 1}
 							 x={facts[k][0]}
