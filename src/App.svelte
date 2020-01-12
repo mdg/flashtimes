@@ -20,6 +20,8 @@
 	});
 	
 	let i = 0;
+    let prompt_index = 0;
+    let answer_index = -1;
 	let xi = facts[i][0];
 	let yi = facts[i][1];
 	let zi = facts[i][2];
@@ -39,9 +41,21 @@
 
 	function show_next() {
 		i = i + 1;
+        prompt_index += 1;
+        answer_index += 1;
 		prompt_display = "none";
 		answer_display = "none";
 	}
+
+    function transition(k, answer_index)
+    {
+        if (k < answer_index) {
+            return `<div transition:fade="{{ duration: 100 }}">`;
+        } else if (k === answer_index) {
+            return `<div transition:slide="{{ duration: 1000 }}">`;
+        }
+        return `<div transition:fade="{{ duration: 1000 }}">`;
+    }
 	
 	function handle_show_next(event) {
 		show_next();
@@ -68,26 +82,11 @@
 <svelte:window on:keydown={handle_keydown}/>
 
 <h1>Hello {name}!</h1>
-{#if prompt_display === ""}
-<p id="fact_sentence" style="display: {prompt_display};" transition:fade="{{ duration: 1000 }}">
-	<FlashCard
-					 i={i + 1}
-					 x={ifact[0]}
-					 y={ifact[1]}
-					 z={ifact[2]}
-					 unknown={ifact[3]}
-					 />
-</p>
-{/if}
-<p id="last_fact">
-	<FlashCard
-					 {i}
-					 x={facts[j][0]}
-					 y={facts[j][1]}
-					 z={facts[j][2]}
-					 unknown={facts[j][3]}
-					 show_answer={true}
-					 />
+
+<p>
+  prompt_index: {prompt_index}
+  <br/>
+  answer_index: {answer_index}
 </p>
 
 <p id=next_button>
@@ -97,17 +96,17 @@
 </p>
 <p>
 	{#each facts as fact, k}
-	  {#if i == k}
-	    <div transition:slide="{{ duration: 1000 }}">
+	  {#if k === prompt_index || k === answer_index}
+        <div transition:slide="{{ duration: 1000 }}">
 	  	<FlashCard
-							 i={k}
+							 i={k + 1}
 							 x={facts[k][0]}
 						   y={facts[k][1]}
 							 z={facts[k][2]}
 							 unknown={facts[k][3]}
-							 show_answer={true}
+							 show_answer={k === answer_index}
 							 />
-			</div>
+        </div>
 	  {/if}
 	{/each}
 </p>

@@ -35,13 +35,18 @@
 	}
 </script>
 
-{#if i > 0}
-<strong>{i}.</strong>
+<span>
+  <strong>{i}.</strong>
+</span>
 
 &nbsp;&nbsp;&nbsp;
 
-{display_x} <strong>x</strong> {display_y} = {display_z}
+<span>
+  {display_x}
+</span>
 
-{:else}
-&nbsp;
-{/if}
+<span>
+  <strong>x</strong>
+</span>
+
+{display_y} = {display_z}
