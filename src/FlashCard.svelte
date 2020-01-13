@@ -19,7 +19,7 @@
   <strong>{i}.</strong>
 </span>
 
-{#if unknown === 0}
+{#if unknown === 0 && !show_answer}
 <span class=number>?</span>
 {:else}
 <span class=number>
@@ -29,7 +29,7 @@
 
 <strong>x</strong>
 
-{#if unknown === 1}
+{#if unknown === 1 && !show_answer}
 <span class=number>?</span>
 {:else}
 <span class=number>
@@ -39,7 +39,7 @@
 
 =
 
-{#if unknown === 2}
+{#if unknown === 2 && !show_answer}
 <span class=number>?</span>
 {:else}
 <span class=number>
