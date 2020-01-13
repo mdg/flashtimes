@@ -1,6 +1,6 @@
 <script>
   import FlashCard from './FlashCard.svelte';
-	import { fade, slide } from 'svelte/transition';
+	import { slide } from 'svelte/transition';
 
 	let name = 'Third Grader';
 	let random_facts = [];
@@ -88,7 +88,7 @@
 	{#each facts as fact, k}
 	  {#if k === prompt_index || k === answer_index}
         <div
-            transition:slide="{{ duration: 1000 }}"
+            transition:slide="{{ delay: 500, duration: 1000 }}"
             style="padding: 10px;"
             >
 	  	<FlashCard
