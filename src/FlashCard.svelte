@@ -7,19 +7,23 @@
 	export let z;
 	export let unknown;
 	export let show_answer = false;
+
+    let x_unknown = unknown == 0 ? "unknown" : "";
+    let y_unknown = unknown == 1 ? "unknown" : "";
+    let z_unknown = unknown == 2 ? "unknown" : "";
 </script>
 
 <style>
     span.problem_number {
         display: inline-block;
-        width: 40px;
+        width: 60px;
         font-weight: bold;
     }
 
 	span.number {
         display: inline-block;
         position: relative;
-		width: 40px;
+		width: 55px;
         text-align: center;
 	}
 
@@ -32,7 +36,7 @@
         text-align: center;
 	}
 
-    span.question-mark {
+    span.unknown {
         color: green;
         font-weight: bold;
     }
@@ -42,9 +46,9 @@
   <strong>{i}.</strong>
 </span>
 
-<span class="number">&nbsp;
+<span class="number {x_unknown}">&nbsp;
 {#if unknown === 0 && !show_answer}
-<span class="factor question-mark"
+<span class="factor"
     out:fade|local="{{ duration: 250 }}"
     >?</span>
 {:else}
@@ -58,9 +62,9 @@
 
 x
 
-<span class="number">&nbsp;
+<span class="number {y_unknown}">&nbsp;
 {#if unknown === 1 && !show_answer}
-<span class="factor question-mark"
+<span class="factor"
     out:fade|local="{{ duration: 250 }}"
     >?</span>
 {:else}
@@ -74,9 +78,9 @@ x
 
 =
 
-<span class="number">&nbsp;
+<span class="number {z_unknown}">&nbsp;
 {#if unknown === 2 && !show_answer}
-<span class="factor question-mark"
+<span class="factor"
     out:fade|local="{{ duration: 250 }}"
     >?</span>
 {:else}

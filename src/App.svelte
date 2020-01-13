@@ -19,32 +19,12 @@
 	  return f;
 	});
 	
-	let i = 0;
     let prompt_index = 0;
     let answer_index = -1;
-	let xi = facts[i][0];
-	let yi = facts[i][1];
-	let zi = facts[i][2];
-	$: ifact = facts[i];
-	$: j = Math.max(0, i - 1);
-	$: jfact = facts[j];
 	
-	let answer_display = "none";
-	let prompt_display = "";
-	
-	function show_answer() {
-		i = i + 1;
-		console.log("i = " + i);
-		prompt_display = "none";
-		answer_display = "";
-	}
-
 	function show_next() {
-		i = i + 1;
         answer_index += 1;
         prompt_index += 1;
-		prompt_display = "none";
-		answer_display = "none";
 	}
 
 	function handle_show_next(event) {
@@ -62,7 +42,7 @@
 
 <style>
 	p {
-		font-size: 18pt;
+		font-size: 30pt;
 	}
 	button {
 		width: 200px;
@@ -73,12 +53,6 @@
 
 <h1>Hello {name}!</h1>
 
-<p>
-  prompt_index: {prompt_index}
-  <br/>
-  answer_index: {answer_index}
-</p>
-
 <p id=next_button>
 	<button on:click={handle_show_next}>
 	  next fact
@@ -88,7 +62,7 @@
 	{#each facts as fact, k}
 	  {#if k === prompt_index || k === answer_index}
         <div
-            transition:slide="{{ delay: 500, duration: 1000 }}"
+            transition:slide="{{ delay: 500, duration: 500 }}"
             style="padding: 10px;"
             >
 	  	<FlashCard
