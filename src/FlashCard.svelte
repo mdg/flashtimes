@@ -5,60 +5,44 @@
 	export let z;
 	export let unknown;
 	export let show_answer = false;
-	
-	var display_x = x;
-	var display_y = y;
-	var display_z = z;
-
-	$: if (!show_answer) {
-		switch (unknown) {
-			case 0:
-				display_x = "?";
-				display_y = y;
-				display_z = z;
-				break;
-			case 1:
-				display_x = x;
-				display_y = "?";
-				display_z = z;
-				break;
-			case 2:
-				display_x = x;
-				display_y = y;
-				display_z = "?";
-				break;
-		}
-	} else {
-		display_x = x;
-		display_y = y;
-		display_z = z;
-	}
 </script>
 
 <style>
-	span {
-		width: 50px;
+	span.number {
+        display: inline-block;
+		width: 40px;
+        text-align: center;
 	}
 </style>
 
-<span>
+<span style="display: inline-block; width: 80;">
   <strong>{i}.</strong>
 </span>
 
-&nbsp;&nbsp;&nbsp;
-
+{#if unknown === 0}
+<span class=number>?</span>
+{:else}
 <span class=number>
-  {display_x}
+  {x}
 </span>
+{/if}
 
 <strong>x</strong>
 
+{#if unknown === 1}
+<span class=number>?</span>
+{:else}
 <span class=number>
-{display_y}
+{y}
 </span>
+{/if}
 
 =
 
+{#if unknown === 2}
+<span class=number>?</span>
+{:else}
 <span class=number>
-{display_z}
+{z}
 </span>
+{/if}

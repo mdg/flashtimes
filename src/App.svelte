@@ -42,6 +42,7 @@
 	function show_next() {
 		i = i + 1;
         answer_index += 1;
+        prompt_index += 1;
 		prompt_display = "none";
 		answer_display = "none";
 	}
@@ -87,9 +88,7 @@
 	{#each facts as fact, k}
 	  {#if k === prompt_index || k === answer_index}
         <div
-            in:slide="{{ duration: 1000 }}"
-            out:slide="{{ duration: 1000 }}"
-            on:outroend="{() => prompt_index += 1}"
+            transition:slide="{{ duration: 1000 }}"
             >
 	  	<FlashCard
 							 i={k + 1}
