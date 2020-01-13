@@ -69,7 +69,7 @@
 	}
 </style>
 
-<svelte:window on:keydown={handle_keydown}/>
+<svelte:window on:keypress={handle_keydown}/>
 
 <h1>Hello {name}!</h1>
 
@@ -89,6 +89,7 @@
 	  {#if k === prompt_index || k === answer_index}
         <div
             transition:slide="{{ duration: 1000 }}"
+            style="padding: 10px;"
             >
 	  	<FlashCard
 							 i={k + 1}

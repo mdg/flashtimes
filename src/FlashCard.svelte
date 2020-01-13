@@ -8,29 +8,40 @@
 </script>
 
 <style>
+    span.problem_number {
+        display: inline-block;
+        width: 40px;
+        font-weight: bold;
+    }
+
 	span.number {
         display: inline-block;
 		width: 40px;
         text-align: center;
 	}
+
+    span.question {
+        color: green;
+        font-weight: bold;
+    }
 </style>
 
-<span style="display: inline-block; width: 80;">
+<span class="problem_number">
   <strong>{i}.</strong>
 </span>
 
 {#if unknown === 0 && !show_answer}
-<span class=number>?</span>
+<span class="number question">?</span>
 {:else}
 <span class=number>
   {x}
 </span>
 {/if}
 
-<strong>x</strong>
+x
 
 {#if unknown === 1 && !show_answer}
-<span class=number>?</span>
+<span class="number question">?</span>
 {:else}
 <span class=number>
 {y}
@@ -40,7 +51,7 @@
 =
 
 {#if unknown === 2 && !show_answer}
-<span class=number>?</span>
+<span class="number question">?</span>
 {:else}
 <span class=number>
 {z}
