@@ -53,12 +53,13 @@
 
 <h1>Hello {name}!</h1>
 
-<p id=next_button>
-	<button on:click={handle_show_next}>
-	  next fact
-  </button>
-</p>
 <p>
+    {#if answer_index == -1}
+      <div
+        transition:slide="{{ delay: 500, duration: 500 }}"
+        style="padding: 10px;"
+        >&nbsp;</div>
+    {/if}
 	{#each facts as fact, k}
 	  {#if k === prompt_index || k === answer_index}
         <div
@@ -76,4 +77,9 @@
         </div>
 	  {/if}
 	{/each}
+</p>
+<p id=next_button>
+	<button on:click={handle_show_next}>
+	  next fact
+  </button>
 </p>
