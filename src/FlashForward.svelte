@@ -2,7 +2,8 @@
 	import FlashCard from './FlashCard.svelte';
 	import { slide } from 'svelte/transition';
 
-	export let upper;
+	export let upper = 11;
+	export let num_problems = 100;
 
 	let random_facts = [];
 	let squares = [];
@@ -14,8 +15,8 @@
 			random_facts.push([Math.random(), x, y, product, 2]);
 		}
 	}
-	random_facts.sort()
-	let facts = random_facts.map(function(f) {
+	random_facts.sort();
+	let facts = random_facts.splice(0, num_problems).map(function(f) {
 	  f.splice(0, 1);
 	  return f;
 	});
