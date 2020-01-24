@@ -2,7 +2,7 @@
     import FlashForward from './FlashForward.svelte';
     import Launch from './Launch.svelte';
 
-	let name = 'Third Grader';
+	let name = 'Multiplier';
 
     let launched = false;
 
@@ -23,6 +23,8 @@
 <FlashForward
     upper=11
     {num_problems}
+    multiplication=true
+    division=false
     />
 {:else}
 <Launch

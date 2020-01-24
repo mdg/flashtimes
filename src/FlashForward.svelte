@@ -4,15 +4,26 @@
 
 	export let upper = 11;
 	export let num_problems = 100;
+    export let multiplication = true;
+    export let division = false;
 
 	let random_facts = [];
 	let squares = [];
 	for (var x=2; x<=upper; x++) {
 		for (var y=2; y<=upper; y++) {
 			const product = x * y;
-			random_facts.push([Math.random(), x, y, product, 0]);
-			random_facts.push([Math.random(), x, y, product, 1]);
-			random_facts.push([Math.random(), x, y, product, 2]);
+            if (multiplication) {
+                var mult = pick_one();
+                random_facts.push([
+                    mult.roll, x, y, product, mult.unknown, "x"
+                ]);
+            }
+            if (division) {
+                var div = pick_one();
+                random_facts.push([
+                    div.roll, product, x, y, div.unknown, "÷"
+                ]);
+            }
 		}
 	}
 	random_facts.sort();
@@ -23,6 +34,19 @@
 
     let prompt_index = 0;
     let answer_index = -1;
+
+    function pick_one() {
+        var rolls = [
+            [Math.random(), 0],
+            [Math.random(), 1],
+            [Math.random(), 2],
+        ];
+        rolls.sort();
+        return {
+            roll: rolls[0][0],
+            unknown: rolls[0][1],
+        };
+    }
 
 	function show_next() {
         answer_index += 1;
@@ -72,6 +96,7 @@
 						   y={facts[k][1]}
 							 z={facts[k][2]}
 							 unknown={facts[k][3]}
+                             operator={facts[k][4]}
 							 show_answer={k === answer_index}
 							 />
         </div>

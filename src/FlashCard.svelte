@@ -6,6 +6,7 @@
 	export let y;
 	export let z;
 	export let unknown;
+    export let operator;
 	export let show_answer = false;
 
     let x_unknown = unknown == 0 ? "unknown" : "";
@@ -60,7 +61,7 @@
 {/if}
 </span>
 
-x
+{operator}
 
 <span class="number {y_unknown}">&nbsp;
 {#if unknown === 1 && !show_answer}
