@@ -16,9 +16,6 @@
     }
 </script>
 
-<style>
-</style>
-
 <h1>Hi {name}!</h1>
 
 {#if launched}

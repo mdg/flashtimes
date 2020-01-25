@@ -39,35 +39,13 @@
 </script>
 
 <style>
-    span.problem_number {
-        display: inline-block;
-        width: 60px;
-        font-weight: bold;
-    }
-
-	span.number {
-        display: inline-block;
-        position: relative;
-		width: 55px;
-        text-align: center;
+	p {
+		font-size: 30pt;
 	}
-
-	span.factor {
-        width: 100%;
-        position: absolute;
-        top: 0px;
-        left: 0px;
-        display: inline-block;
-        text-align: center;
-	}
-
-    span.unknown {
-        color: green;
-        font-weight: bold;
-    }
 
     button.operation {
-        width: 70px;
+        width: 110px;
+        font-weight: bold;
     }
 
     button.op_selected {
@@ -107,7 +85,7 @@
 <p>
 	<button id=go_button on:click={handle_launch}>
 		&nbsp;
-		go
+		go!
 		&nbsp;
 	</button>
 </p>
