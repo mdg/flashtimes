@@ -14,11 +14,17 @@
     function toggle_op_mult()
     {
         op_mult = !op_mult;
+        if (!op_mult) {
+            op_div = true;
+        }
     }
 
     function toggle_op_div()
     {
         op_div = !op_div;
+        if (!op_div) {
+            op_mult = true;
+        }
     }
 
     function op_state_class(op_state)
@@ -65,10 +71,12 @@
     }
 
     button.op_selected {
+        color: #ffffff;
         background-color: #119911;
     }
 
     button.op_unselected {
+        color: #222222;
         background-color: #b0b0b0;
     }
 
