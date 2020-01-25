@@ -4,21 +4,21 @@
 
 	export let upper = 11;
 	export let num_problems = 100;
-    export let multiplication = true;
-    export let division = false;
+    export let op_mult = true;
+    export let op_div = false;
 
 	let random_facts = [];
 	let squares = [];
 	for (var x=2; x<=upper; x++) {
 		for (var y=2; y<=upper; y++) {
 			const product = x * y;
-            if (multiplication) {
+            if (op_mult) {
                 var mult = pick_one();
                 random_facts.push([
                     mult.roll, x, y, product, mult.unknown, "x"
                 ]);
             }
-            if (division) {
+            if (op_div) {
                 var div = pick_one();
                 random_facts.push([
                     div.roll, product, x, y, div.unknown, "÷"
