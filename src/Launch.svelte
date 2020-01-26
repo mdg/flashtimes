@@ -40,7 +40,7 @@
 
 <style>
 	p {
-		font-size: 30pt;
+		font-size: 24pt;
 	}
 
     button.operation {
