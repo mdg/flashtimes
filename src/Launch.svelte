@@ -79,7 +79,7 @@
 </p>
 
 <p>
-    # of Problems? <input bind:value={num_problems} />
+    # of Problems? <input type=number bind:value={num_problems} />
 </p>
 
 <p>
